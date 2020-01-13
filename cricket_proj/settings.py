@@ -78,11 +78,22 @@ WSGI_APPLICATION = 'cricket_proj.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'd83b2q8a1geuje',
+        'USER': 'nbqrctrjblwzeg',
+        'PASSWORD': '564481352c33b6485754aaba5a3c4ce1e8e1df0240c53e5db1bbb687cb8cfa06',
+        'HOST': 'ec2-174-129-33-207.compute-1.amazonaws.com',
+        'PORT': '5432'
+    },
 }
 
 
