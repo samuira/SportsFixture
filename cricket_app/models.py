@@ -1,7 +1,6 @@
 from django.db import models
 import uuid
-
-from django.db.models import Max
+from django.db.models import Sum
 
 
 class Player(models.Model):
@@ -26,6 +25,9 @@ class Team(models.Model):
 
     def __str__(self):
         return 'uuid: {}, name: {}'.format(self.uuid, self.name)
+
+    def total_point(self):
+        return sum(point.score for point in Point.objects.filter(team=self))
 
 
 class Match(models.Model):

@@ -188,6 +188,7 @@
                         <th>Name</th>
                         <th>Image</th>
                         <th>Club State</th>
+                        <th>Total Point</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -199,6 +200,7 @@
                         <td>{{ team.name }}</td>
                         <td>{% if team.logoUri %}<img src="{{MEDIA_URL}}{{ team.logoUri }}" height="30" >{% endif %}</td>
                         <td>{{ team.club_state }} </td>
+                        <td>{{ team.total_point }} </td>
                         <td nowrap>
                             <a href="{% url 'team-edit' pk=team.id %}" title="Edit details" class="btn btn-sm btn-clean btn-icon btn-icon-md"> <i class="la la-edit"></i> </a>
                         </td>
