@@ -15,6 +15,15 @@ class Player(models.Model):
         return 'uuid: {}, name: {} {}, jersey number: {}'\
             .format(self.uuid, self.first_name, self.last_name, self.jersey_number)
 
+    def player_high_score(self):
+        return PlayerHistory.objects.filter(player=self).order_by('-run').first().run if PlayerHistory.objects.filter(player=self).order_by('-run').first() else 0
+
+    def player_fifties(self):
+        return PlayerHistory.objects.filter(player=self).filter(run__gte=50).count()
+
+    def player_hundreds(self):
+        return PlayerHistory.objects.filter(player=self).filter(run__gte=100).count()
+
 
 class Team(models.Model):
     uuid = models.UUIDField(default=uuid.uuid4, editable=False)
@@ -74,7 +83,7 @@ class PlayerHistory(models.Model):
                     self.player.last_name if self.player else '', self.run)
 
     def player_high_score(self):
-        return PlayerHistory.objects.filter(player=self.player).order_by('-run').first().run
+        return PlayerHistory.objects.filter(player=self.player).order_by('-run').first().run if PlayerHistory.objects.filter(player=self).order_by('-run').first() else 0
 
     def player_fifties(self):
         return PlayerHistory.objects.filter(player=self.player).filter(run__gte=50).count()

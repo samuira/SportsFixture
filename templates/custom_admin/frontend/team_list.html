@@ -1,0 +1,55 @@
+{% extends "custom_admin/frontend/front_base.html" %}
+{% load static %}
+{% block content %}
+<div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
+    {% for team in teams %}
+    <div class="kt-portlet">
+    <div class="kt-portlet__body">
+        <div class="kt-widget kt-widget--user-profile-3">
+            <div class="kt-widget__top">
+                <div class="kt-widget__media kt-hidden-">
+                    <img src="{{MEDIA_URL}}{{ team.logoUri }}" alt="image">
+                </div>
+                <div
+                        class="kt-widget__pic kt-widget__pic--danger kt-font-danger kt-font-boldest kt-font-light kt-hidden">
+                    JM
+                </div>
+                <div class="kt-widget__content">
+                    <div class="kt-widget__head">
+                        <a href="#" class="kt-widget__username">
+                            {{team.name}}
+                            <i class="flaticon2-correct kt-font-success"></i>
+                        </a>
+
+                        <div class="kt-widget__action">
+                            <a href="{% url 'fe-team-details' pk=team.id %}"
+                                    class="btn btn-brand btn-sm btn-upper">Details
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="kt-widget__info">
+                        <div class="kt-widget__desc">
+                            {{ team.club_state }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="kt-widget__bottom">
+                <div class="kt-widget__item">
+                    <div class="kt-widget__icon">
+                        <i class="flaticon-piggy-bank"></i>
+                    </div>
+                    <div class="kt-widget__details">
+                        <span class="kt-widget__title">Total Point</span>
+                        <span class="kt-widget__value">{{team.total_point}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    {% endfor %}
+</div>
+
+{% endblock content %}

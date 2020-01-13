@@ -1,0 +1,70 @@
+{% extends "custom_admin/frontend/front_base.html" %}
+{% load static %}
+{% block content %}
+<div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
+    {% for match in matches %}
+    <div class="kt-portlet">
+    <div class="kt-portlet__body">
+        <div class="kt-widget kt-widget--user-profile-3">
+            <div class="kt-widget__top">
+                <div class="kt-widget__media kt-hidden-">
+                    <img src="{{MEDIA_URL}}{{ match.team1.logoUri }}" height="60" alt="image">
+                </div>
+                <div class="kt-widget__media kt-hidden-">
+                    <img src="{{MEDIA_URL}}{{ match.team2.logoUri }}" height="60" alt="image">
+                </div>
+                <div
+                        class="kt-widget__pic kt-widget__pic--danger kt-font-danger kt-font-boldest kt-font-light kt-hidden">
+                    JM
+                </div>
+                <div class="kt-widget__content">
+                    <div class="kt-widget__head">
+                        <a href="#" class="kt-widget__username">
+                            {{match.name}}
+                            <i class="flaticon2-correct kt-font-success"></i>
+                        </a>
+                    </div>
+
+                    <div class="kt-widget__info">
+                        <div class="kt-widget__desc">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="kt-widget__bottom">
+                <div class="kt-widget__item">
+                    <div class="kt-widget__icon">
+                        <i class="flaticon-piggy-bank"></i>
+                    </div>
+                    <div class="kt-widget__details">
+                        <span class="kt-widget__title">Team 1 (total point)</span>
+                        <span class="kt-widget__value">{{match.team1.name}} ({{match.team1.total_point}})</span>
+                    </div>
+                </div>
+                <div class="kt-widget__item">
+                    <div class="kt-widget__icon">
+                        <i class="flaticon-piggy-bank"></i>
+                    </div>
+                    <div class="kt-widget__details">
+                        <span class="kt-widget__title">Team 2 (total point)</span>
+                        <span class="kt-widget__value">{{match.team2.name}} ({{match.team1.total_point}})</span>
+                    </div>
+                </div>
+                <div class="kt-widget__item">
+                    <div class="kt-widget__icon">
+                        <i class="flaticon-piggy-bank"></i>
+                    </div>
+                    <div class="kt-widget__details">
+                        <span class="kt-widget__title">Winner</span>
+                        <span class="kt-widget__value">{{match.winner.name}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    {% endfor %}
+</div>
+
+{% endblock content %}

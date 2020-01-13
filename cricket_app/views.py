@@ -1,3 +1,4 @@
+from django.views.generic import ListView
 from rest_framework.authentication import BasicAuthentication
 from rest_framework.parsers import JSONParser
 from rest_framework.permissions import AllowAny
@@ -37,6 +38,9 @@ class PointListView(generics.ListCreateAPIView):
     authentication_classes = (CsrfExemptSessionAuthentication, BasicAuthentication,)
     queryset = Fixture.objects.all().first().matches.all()
     serializer_class = MatchFixtureListSerializer
+
+
+
 
 
 
