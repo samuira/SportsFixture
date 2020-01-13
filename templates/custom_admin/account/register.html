@@ -1,0 +1,50 @@
+{% extends "custom_admin/account/account_base.html" %}
+{% load static %}
+{% block content %}
+<div class="">
+    <div class="kt-login__head">
+        <h3 class="kt-login__title">Sign Up</h3>
+        <div class="kt-login__desc">Enter your details to create your account:</div>
+    </div>
+    {% include 'custom_admin/partials/alert_error.html' %}
+    <form class="kt-form" action="{% url 'register' %}" method="post">
+      {% csrf_token %}
+        <div class="input-group">
+            <input class="form-control" type="text" placeholder="Email" name="email"
+                autocomplete="off" value="{{form.cleaned_data.email}}">
+        </div>
+        {% if error.email %}<span class="kt-font-danger kt-font-bold">{{error.email}}</span>{% endif %}
+        <div class="input-group">
+            <input class="form-control" type="password" placeholder="Password" name="password">
+        </div>
+        {% if error.password %}<span class="kt-font-danger kt-font-bold">{{error.password}}</span>{% endif %}
+        <div class="input-group">
+            <input class="form-control" type="password" placeholder="Confirm Password"
+                name="c_password">
+        </div>
+        {% if error.c_password %}<span class="kt-font-danger kt-font-bold">{{error.c_password}}</span>{% endif %}
+        <div class="row kt-login__extra">
+            <div class="col kt-align-left">
+                <label class="kt-checkbox">
+                    <input type="checkbox" name="agree">I Agree the <a href="#"
+                        class="kt-link kt-login__link kt-font-bold">terms and conditions</a>.
+                    <span></span>
+                </label>
+                <span class="form-text text-muted"></span>
+            </div>
+        </div>
+        <div class="kt-login__actions">
+            <button type="submit"
+                class="btn btn-brand btn-pill kt-login__btn-primary">Sign
+                Up</button>&nbsp;&nbsp;
+        </div>
+    </form>
+</div>
+<div class="kt-login__account">
+    <span class="kt-login__account-msg">
+        Already have an account?
+    </span>
+    &nbsp;&nbsp;
+    <a href="{% url 'login' %}" class="kt-login__account-link">Sign In!</a>
+</div>
+{% endblock content %}

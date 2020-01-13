@@ -1,0 +1,57 @@
+{% extends "custom_admin/account/account_base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="kt-login__signin">
+    <div class="kt-login__head">
+        <h3 class="kt-login__title">Sign In To Admin</h3>
+    </div>
+  {% include 'custom_admin/partials/alert_error.html' %}
+    <form class="kt-form" action="{% url 'login' %}" method="post">
+      {% csrf_token %}
+        <div class="input-group">
+            <input class="form-control" type="text" placeholder="Email" name="email"
+                autocomplete="off" value="{{form.cleaned_data.email}}">
+        </div>
+      {% if error.email %}<span class="kt-font-danger kt-font-bold">{{error.email}}</span>{% endif %}
+        <div class="input-group">
+            <input class="form-control" type="password" placeholder="Password" name="password">
+        </div>
+      {% if error.password %}<span class="kt-font-danger kt-font-bold">{{error.password}}</span>{% endif %}
+        <div class="row kt-login__extra">
+            <div class="col">
+                <label class="kt-checkbox">
+                    <input type="checkbox" name="remember"> Remember me
+                    <span></span>
+                </label>
+            </div>
+            <div class="col kt-align-right">
+                <a href="javascript:;" id="kt_login_forgot" class="kt-login__link">Forget
+                    Password ?</a>
+            </div>
+        </div>
+        <div class="kt-login__actions">
+            <button type="submit"
+                class="btn btn-brand btn-pill kt-login__btn-primary">Sign In</button>
+        </div>
+    </form>
+</div>
+<div class="kt-login__forgot">
+    <div class="kt-login__head">
+        <h3 class="kt-login__title">Forgotten Password ?</h3>
+        <div class="kt-login__desc">Enter your email to reset your password:</div>
+    </div>
+    <form class="kt-form" action="#">
+        <div class="input-group">
+            <input class="form-control" type="text" placeholder="Email" name="email"
+                id="kt_email" autocomplete="off">
+        </div>
+        <div class="kt-login__actions">
+            <button id="kt_login_forgot_submit"
+                class="btn btn-brand btn-pill kt-login__btn-primary">Request</button>&nbsp;&nbsp;
+            <button id="kt_login_forgot_cancel"
+                class="btn btn-secondary btn-pill kt-login__btn-secondary">Cancel</button>
+        </div>
+    </form>
+</div>
+{% endblock content %}
