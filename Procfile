@@ -1,0 +1,1 @@
+web: daphne cricket_proj.asgi:application --log-file -
