@@ -83,7 +83,7 @@ class PlayerHistory(models.Model):
                     self.player.last_name if self.player else '', self.run)
 
     def player_high_score(self):
-        return PlayerHistory.objects.filter(player=self.player).order_by('-run').first().run if PlayerHistory.objects.filter(player=self).order_by('-run').first() else 0
+        return PlayerHistory.objects.filter(player=self.player).order_by('-run').first().run if PlayerHistory.objects.filter(player=self.player).order_by('-run').first() else 0
 
     def player_fifties(self):
         return PlayerHistory.objects.filter(player=self.player).filter(run__gte=50).count()
