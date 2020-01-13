@@ -1,1 +1,1 @@
-web: daphne cricket_proj.asgi:application
+web: gunicorn bootcamp.wsgi --log-file -
